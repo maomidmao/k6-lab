@@ -2,6 +2,7 @@
 ## Part 0
 - Step 0.1, http_req_duration: 
 avg=467.96ms min=467.96ms med=467.96ms max=467.96ms p(90)=467.96ms p(95)=467.96ms
+
 - Step 0.2, requests, rate and p(95), and why the rate stays below 5:
 77 requests, 3.67 requests per second, p(95) = 316.96 ms.
 The rate stays below 5 because one virtual user does not send requests non-stop. One iteration is one request (about 285 ms on average) plus sleep(1), the 1 second of think time, so an iteration takes about 1.32 s (iteration_duration avg = 1.32 s). One user can therefore send only about 1 / 1 32 = 0.76 requests per second, and 5 users send about 5 x 0.76 = 3.8 requests per second. The measured 3.67 is a little lower because K6 divides by the whole run time of 21.0 s, not exactly 20 s.

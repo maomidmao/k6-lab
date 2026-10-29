@@ -1,7 +1,7 @@
  # K6 lab results
 ## Part 0
 - Step 0.1, http_req_duration:\
-avg=467.96ms min=467.96ms med=467.96ms max=467.96ms p(90)=467.96ms p(95)=467.96ms
+http_req_duration: 467.96 ms (all values are the same, one request)
 
 - Step 0.2, requests, rate and p(95), and why the rate stays below 5:\
 77 requests, 3.67 requests per second, p(95) = 316.96 ms.
@@ -13,7 +13,9 @@ Normal run: 0 (all thresholds passed). Run with P95=300: 99 (the p(95) threshold
 - Step 0.7, rules that passed, p(95), p(99), exit code after your change:\
 All 3 rules passed: failed rate 0.00% (<1%), p(95) = 401.21 ms (<1000), p(99) = 456.74 ms (<1500). After changing p(95)<1000 to p(95)<300, the p(95) rule failed (p(95) = 437.26 ms) while p(99) and the failed rate still passed. The exit code was 99.
 
-- Step 0.8, what was wrong, and how the checks showed it:
+- Step 0.8, what was wrong, and how the checks showed it:\
+The request used 'pepperoni' and 'knife', but the API names are 'Pepperoni' and 'Knife'. The API ignored them and still answered 200. The checks failed 15% (no pepperoni) and 38% (no knife needed) of the time. After fixing the names, all checks passed (225 of 225). Many requests under load show the problem clearly, and checking the answer's content finds it, not just the status code.
+
 ## Part A results
 | Step | Test type | Users | Req/s | p(95) | Max | Failed | Checks |
 | ---- | ------------ | ----- | ----- | ----- | --- | ------ | ------ |

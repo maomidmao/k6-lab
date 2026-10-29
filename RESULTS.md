@@ -10,7 +10,9 @@ The rate stays below 5 because one virtual user does not send requests non-stop.
 - Step 0.6, exit code of the normal run and of the run with P95=300: \
 Normal run: 0 (all thresholds passed). Run with P95=300: 99 (the p(95) threshold failed, so K6 reports the test as failed).
 
-- Step 0.7, rules that passed, p(95), p(99), exit code after your change:
+- Step 0.7, rules that passed, p(95), p(99), exit code after your change:\
+All 3 rules passed: failed rate 0.00% (<1%), p(95) = 401.21 ms (<1000), p(99) = 456.74 ms (<1500). After changing p(95)<1000 to p(95)<300, the p(95) rule failed (p(95) = 437.26 ms) while p(99) and the failed rate still passed. The exit code was 99.
+
 - Step 0.8, what was wrong, and how the checks showed it:
 ## Part A results
 | Step | Test type | Users | Req/s | p(95) | Max | Failed | Checks |

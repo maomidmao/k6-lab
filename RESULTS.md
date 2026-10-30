@@ -22,7 +22,7 @@ The request used 'pepperoni' and 'knife', but the API names are 'Pepperoni' and 
 | A1 | Smoke | 1 | 0.50 | 376 ms | 377 ms | 0.00% | 100% |
 | A2 | Average load | 3 | 1.31 | 376 ms | 1.07 ms | 0.00% | 100% |
 | A3 | Stress | 5 | 2.06 | 481 ms | 1.72 s | 0.00% | 100% |
-| A4 | Spike | 5 | | | | | |
+| A4 | Spike | 5 | 1.01 | 470 ms | 1.38 s | 0.00% | 100% |
 | A5 | Soak | 2 | | | | | |
 ## Part B
 1.
